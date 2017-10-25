@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>
+        Your Repositories
+        <a class="btn btn-primary pull-right" href="{{ path('repository_new') }}">Create a new repository</a>
+    </h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for repository in repositories %}
+            <tr>
+                <td><a href="{{ path('repository_show', { 'id': repository.id }) }}">{{ repository.id }}</a></td>
+                <td>{{ repository.name }}</td>
+                <td>
+                    <a class="btn btn-default btn-sm" href="{{ path('repository_edit', { 'id': repository.id }) }}">Edit</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

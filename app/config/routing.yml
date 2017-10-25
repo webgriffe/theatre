@@ -1,0 +1,8 @@
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation
+
+repositories:
+    type:     rest
+    #host:     m.example.com
+    resource: \AppBundle\Controller\RepositoryController

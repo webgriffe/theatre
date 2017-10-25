@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Repository</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ repository.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ repository.name }}</td>
+            </tr>
+            <tr>
+                <th>Repositories</th>
+                <td>{% if repository.repositories %}{{ repository.repositories|join(', ') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Packages</th>
+                <td>
+                    {% if repository.packages %}
+                        {% set packages = [] %}
+                        {% for package in repository.packages %}
+                            {% set packages = packages|merge([package.name~':'~package.version]) %}
+                        {% endfor %}
+                        {{ packages|join(', ') }}
+                    {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <th>Satis JSON</th>
+                <td><pre>{{ satis_json_builder.build(repository) }}</pre></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <hr />
+
+    <a href="{{ path('repository_index') }}">&laquo; Back to the list</a>
+    <a class="btn btn-primary pull-right" href="{{ path('repository_edit', { 'id': repository.id }) }}">Edit/Delete&hellip;</a>
+
+{% endblock %}
