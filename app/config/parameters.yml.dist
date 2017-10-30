@@ -18,4 +18,4 @@ parameters:
     # A secret key that's used to generate certain security-related tokens
     secret: ThisTokenIsNotSoSecretChangeIt
 
-    app.base_url: my.theatre.host
+    app.base_url: https://my.theatre.host/
